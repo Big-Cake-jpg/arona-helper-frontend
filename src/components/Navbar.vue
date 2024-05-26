@@ -13,12 +13,11 @@
     </mdui-navigation-rail>
 </template>
 
-<script lang="ts">
+<script>
 import 'mdui/components/navigation-rail.js';
 import 'mdui/components/navigation-rail-item.js';
 import 'mdui/components/button-icon.js';
 import 'mdui/components/fab.js';
-// @ts-expect-error
 import '@mdui/icons/home--outlined.js';
 import '@mdui/icons/home.js';
 import '@mdui/icons/settings.js';
