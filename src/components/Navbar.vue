@@ -13,7 +13,7 @@
     </mdui-navigation-rail>
 </template>
 
-<script>
+<script lang="ts" setup>
 import 'mdui/components/navigation-rail.js';
 import 'mdui/components/navigation-rail-item.js';
 import 'mdui/components/button-icon.js';
