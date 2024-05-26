@@ -4,6 +4,7 @@ import 'mdui/mdui.css'
 
 import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'
+// @ts-expect-error
 import routes from "~pages";
 
 import App from './App.vue'
