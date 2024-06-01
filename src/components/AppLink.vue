@@ -1,23 +1,40 @@
 <template>
-    <component :is="isExternal ? 'a' : 'router-link'" :href="isExternal ? to : undefined"
-        :to="isExternal ? undefined : to" v-bind="$attrs" v-on="$listeners">
+    <a v-if="isExternalLink" v-bind="$attrs" :href="to" target="_blank">
+      <slot />
+    </a>
+    <router-link
+      v-else
+      v-bind="$props"
+      custom
+      v-slot="{ isActive, href, navigate }"
+    >
+      <a
+        v-bind="$attrs"
+        :href="href"
+        @click="navigate"
+        :class="isActive ? activeClass : inactiveClass"
+      >
         <slot />
-    </component>
-</template>
-
-<script>
-export default {
+      </a>
+    </router-link>
+  </template>
+  
+  <script>
+  import { RouterLink } from 'vue-router'
+  
+  export default {
     name: 'AppLink',
+    inheritAttrs: false,
+  
     props: {
-        to: {
-            type: String,
-            required: true,
-        },
+      // @ts-ignore
+      ...RouterLink.props,
     },
+  
     computed: {
-        isExternal() {
-            return this.to.startsWith('http://') || this.to.startsWith('https://');
-        },
+      isExternalLink() {
+        return typeof this.to === 'string' && this.to.startsWith('http', 'https')
+      },
     },
-};
-</script>
+  }
+  </script>

@@ -20,7 +20,9 @@
 import 'mdui/components/card.js';
 import 'mdui/components/divider.js';
 import 'mdui/components/button.js';
-import 'mdui/components/avatar.js';
 import '@mdui/icons/account-circle.js';
 import '@mdui/icons/arrow-forward.js';
+import { useTitle } from '@vueuse/core';
+
+useTitle("首页 - 阿罗那小助手")
 </script>
