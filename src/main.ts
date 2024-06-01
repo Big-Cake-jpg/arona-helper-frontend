@@ -1,9 +1,6 @@
 import './assets/main.css'
 import 'virtual:uno.css'
 import 'mdui/mdui.css'
-import { setColorScheme } from 'mdui/functions/setColorScheme.js';
-
-setColorScheme('#5cabff');
 
 import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'

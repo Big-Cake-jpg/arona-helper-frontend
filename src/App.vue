@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import { setColorScheme } from 'mdui/functions/setColorScheme.js';
+
+setColorScheme('#5cabff');
+</script>
+
 <template>
   <Navbar />
   <div class="m-auto p-4">
