@@ -17,6 +17,5 @@ export const createApp = ViteSSG(
   // function to have custom setups
   ({ app, router, routes, isClient, initialState }) => {
     app.use(createPinia())
-    app.use(router)
   }
 )

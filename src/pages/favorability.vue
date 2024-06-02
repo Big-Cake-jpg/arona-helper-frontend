@@ -4,10 +4,10 @@
         <p>您可以在此查询一系列信息，包括但不限于「排名」、「好感度」、「等级」。</p>
         <mdui-divider></mdui-divider>
         <div class="grid grid-cols-2 gap-4 pt-5 pb-5">
-            <mdui-text-field label="用户名" placeholder="Big_Cake" clearable><mdui-icon-account-circle
+             <mdui-text-field label="ID" placeholder="114514" clearable><mdui-icon-numbers
+             slot="icon"></mdui-icon-numbers></mdui-text-field>
+             <mdui-text-field label="角色名" placeholder="日富美" clearable><mdui-icon-account-circle
                     slot="icon"></mdui-icon-account-circle></mdui-text-field>
-                    <mdui-text-field label="ID" placeholder="114514" clearable><mdui-icon-numbers
-                    slot="icon"></mdui-icon-numbers></mdui-text-field>
             <mdui-select placeholder="排序方式">
                 <mdui-icon-filter-list slot="icon"></mdui-icon-filter-list>
                 <mdui-menu-item value="rank">排名</mdui-menu-item>

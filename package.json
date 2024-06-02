@@ -19,6 +19,7 @@
     "@vueuse/head": "^2.0.0",
     "@vueuse/integrations": "^10.9.0",
     "@vueuse/shared": "^10.9.0",
+    "axios": "^1.7.2",
     "mdui": "^2.1.1",
     "pinia": "^2.1.7",
     "unocss": "^0.60.3",

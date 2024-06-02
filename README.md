@@ -1,39 +1,26 @@
-# aronahelper-favorability-board
+# 阿罗那小助手 | 前端服务
 
-This template should help get you started developing with Vue 3 in Vite.
+QQ 机器人 阿罗那小助手 配套前端服务
 
-## Recommended IDE Setup
+## 特点
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Vue 3、Vite 5 - 极致快速
+- Material You - 美观耐看
+- pnpm、ESLint、Prettier - 开发便捷
 
-## Type Support for `.vue` Imports in TS
+## 开发
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+请确保电脑上安装了 Node.js 与 pnpm。
 
 ```sh
+git clone https://github.com/Big-Cake-jpg/aronahelper-favorability-board.git
+cd aronahelper-favorability-board
 pnpm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 pnpm dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
+pnpm lint
 pnpm build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+## LICENSE
 
-```sh
-pnpm lint
-```
+MIT
