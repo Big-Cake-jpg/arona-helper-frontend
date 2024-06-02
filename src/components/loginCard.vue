@@ -76,7 +76,7 @@ export default {
     onMounted(async () => {
       watchEffect(() => {
         if (logincode.value) {
-          textField?.value.focus()
+          textField.value?.focus()
         } else {
         }
       })
