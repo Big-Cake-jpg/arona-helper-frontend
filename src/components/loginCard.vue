@@ -82,7 +82,7 @@ export default {
             }, 1000);
 
             try {
-                const response = await axios.get('http://api-arona.230225.xyz/account/login/code/get');
+                const response = await axios.get('https://api-arona.230225.xyz/account/login/code/get');
                 const data = await response.data;
                 logincode.value = data.auth_code;
             } catch (err) {
