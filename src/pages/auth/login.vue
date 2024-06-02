@@ -11,4 +11,10 @@
 import { useTitle } from '@vueuse/core';
 
 useTitle("登录 - 阿罗那小助手")
+
+export default {
+    components: {
+        loginCard: () => import('@/components/loginCard.vue')
+    }
+}
 </script>
