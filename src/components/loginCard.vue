@@ -76,6 +76,7 @@ export default {
     onMounted(async () => {
       watchEffect(() => {
         if (logincode.value) {
+          // @ts-expect-error
           textField.value?.focus()
         } else {
         }
