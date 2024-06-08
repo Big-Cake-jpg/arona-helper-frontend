@@ -30,7 +30,6 @@
 import 'mdui/components/card.js'
 import 'mdui/components/switch.js';
 import { useTitle, useDark } from '@vueuse/core';
-import { toggleDark } from 'Navbar.vue';
 import { version } from '../../package.json';
 
 useTitle("设置 - 阿罗娜小助手")
