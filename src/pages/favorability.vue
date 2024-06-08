@@ -30,5 +30,5 @@ import '@mdui/icons/search.js';
 import '@mdui/icons/numbers.js';
 import { useTitle } from '@vueuse/core';
 
-useTitle("好感度面板 - 阿罗那小助手")
+useTitle("好感度面板 - 阿罗娜小助手")
 </script>

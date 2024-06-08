@@ -4,6 +4,6 @@ import { presetUno } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetUno()
+    presetUno(),
   ]
 })

@@ -1,6 +1,9 @@
-# 阿罗那小助手 | 前端服务
+# 阿罗娜小助手 | 前端服务
 
-QQ 机器人 阿罗那小助手 配套前端服务
+QQ 机器人 阿罗娜小助手 配套前端服务
+
+![GitHub last commit](https://img.shields.io/github/last-commit/Big-Cake-jpg/aronahelper-favorability-board?style=flat-square) ![GitHub License](https://img.shields.io/github/license/Big-Cake-jpg/aronahelper-favorability-board?style=flat-square)
+
 
 ## 特点
 
