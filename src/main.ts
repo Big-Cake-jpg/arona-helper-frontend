@@ -24,4 +24,5 @@ export const createApp = ViteSSG(
 
 loadLocale((locale) => import(`../node_modules/mdui/locales/${locale}.js`))
 
-setLocale('zh-cn')
+if (typeof window !== 'undefined')
+    setLocale('zh-cn')
