@@ -1,11 +1,11 @@
 import './assets/main.css'
 import 'virtual:uno.css'
 import 'mdui/mdui.css'
+import './assets/nprogress.css'
 
 import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'
-import { loadLocale } from 'mdui/functions/loadLocale.js'
-import { setLocale } from 'mdui/functions/setLocale.js'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 // @ts-expect-error
 import routes from '~pages'
 
@@ -19,10 +19,18 @@ export const createApp = ViteSSG(
   // function to have custom setups
   ({ app, router, routes, isClient, initialState }) => {
     app.use(createPinia())
+    if (isClient) {
+      const { isLoading } = useNProgress(null, {
+        showSpinner: false,
+      })
+
+      router.beforeEach(() => {
+        isLoading.value = true
+      })
+
+      router.afterEach(() => {
+        isLoading.value = false
+      })
+    }
   }
 )
-
-loadLocale((locale) => import(`../node_modules/mdui/locales/${locale}.js`))
-
-if (typeof window !== 'undefined')
-    setLocale('zh-cn')

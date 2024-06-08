@@ -26,7 +26,7 @@ import { dialog } from 'mdui/functions/dialog.js'
 import '@mdui/icons/code.js'
 import '@mdui/icons/info--outlined.js'
 import '@mdui/icons/refresh.js';
-import { ref, onMounted, watchEffect, nextTick } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import axios from 'axios'
 

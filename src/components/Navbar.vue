@@ -1,5 +1,5 @@
 <template>
-  <mdui-navigation-bar v-if="isMobile" :value="currentPage">
+  <mdui-navigation-bar v-if="isMobile" :value="currentPage" scroll-behavior="hide">
     <mdui-navigation-bar-item href="/" value="/" @click.prevent="navigateTo('/')"><mdui-icon-home
         slot="active-icon"></mdui-icon-home><mdui-icon-home--outlined slot="icon"
         alt="首页"></mdui-icon-home--outlined>首页</mdui-navigation-bar-item>
@@ -108,7 +108,6 @@ export default {
       isMobile,
       currentPage,
       navigateTo,
-      isMobile,
     };
   },
 };

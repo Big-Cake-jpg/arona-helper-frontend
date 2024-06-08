@@ -9,14 +9,8 @@
     </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { useTitle } from '@vueuse/core';
 
 useTitle("登录 - 阿罗娜小助手")
-
-export default {
-    components: {
-        loginCard: () => import('@/components/loginCard.vue')
-    }
-}
 </script>
