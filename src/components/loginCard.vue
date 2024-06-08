@@ -77,8 +77,8 @@ export default {
             try {
                 const response = await axios.get('https://api-arona.230225.xyz/account/login/code/get')
                 const data = await response.data
-                logincode.value = data.auth_code
-                countdown.value = 120
+                logincode.value = data.data?.auth_code
+                countdown.value = data.data?.exp
                 isTimeUp.value = false
 
                 const timer = setInterval(() => {
