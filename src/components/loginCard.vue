@@ -63,7 +63,7 @@ export default {
                 body: '请检查您的网络连接是否正常，或者尝试重新获取登录代码。<br/>如果仍然无法登录，请加入 QQ 群联系我们。',
                 actions: [
                     {
-                        text: '加入 QQ 群寻求帮助',
+                        text: '获取帮助',
                         onClick: () => { window.open("https://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=52ZKih_plrIdrn0X8OTaXnKPp9LgtqVs&authKey=yK1u5GClhphiEZ2LrERghmwXUiu%2B5K3zBYc%2FnFuYE%2FwPWYnhNIyawF1Aj26bLJZn&noverify=0&group_code=584380963") },
                     },
                     {

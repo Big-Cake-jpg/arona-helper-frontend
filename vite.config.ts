@@ -4,10 +4,11 @@ import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
-import VitePages from "vite-plugin-pages";
-import ViteMarkdown from "vite-plugin-md";
-import AutoImport from "unplugin-auto-import/vite";
-import Components from "unplugin-vue-components/vite";
+import VitePages from 'vite-plugin-pages'
+import ViteMarkdown from 'vite-plugin-md'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { unheadComposablesImports } from 'unhead'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,16 +24,16 @@ export default defineConfig({
     VueDevTools(),
     UnoCSS(),
     VitePages({
-      extensions: ["vue", "md"],
-      exclude: ["**/components/*.vue"],
+      extensions: ['vue', 'md'],
+      exclude: ['**/components/*.vue']
     }),
     ViteMarkdown(),
     AutoImport({
-      imports: ["vue"],
+      imports: ['vue', unheadComposablesImports[0]]
     }),
     Components({
-      extensions: ["vue", "md"],
-    }),
+      extensions: ['vue', 'md']
+    })
   ],
   resolve: {
     alias: {

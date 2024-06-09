@@ -1,8 +1,9 @@
 <template>
     <div class="mdui-prose max-w-3xl m-auto">
         <h1>首页 <mdui-badge variant="large">新版测试</mdui-badge></h1>
-        <p>欢迎使用阿罗娜机器人前端服务，该面板可以查询阿罗娜小助手好感度相关信息。</p>
-        <p>您可以在此查询一系列信息，包括但不限于「排名」、「好感度」、「等级」。</p>
+        <p>欢迎使用阿罗娜机器人前端服务！</p>
+        <p>目前还没有做什么实际功能，仅用于 UI 预览。</p>
+        <blockquote><del>什么人啊这都，才写个 UI 都能写成屎山</del></blockquote>
         <p>登录以获得更好的体验！</p>
     </div>
     <div class="max-w-3xl m-auto mt-5 mb-5">
@@ -11,7 +12,6 @@
                     slot="end-icon"></mdui-icon-arrow-forward></mdui-button></RouterLink>
     </div>
     <div class="mdui-prose max-w-3xl m-auto">
-        <p>即使不登录，基础的查询功能依旧可用！Hooray！</p>
         <mdui-divider></mdui-divider>
     </div>
 </template>
