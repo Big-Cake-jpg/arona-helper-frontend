@@ -13,9 +13,9 @@
         slot="icon"></mdui-icon-settings--outlined>设置</mdui-navigation-bar-item>
   </mdui-navigation-bar>
   <mdui-navigation-rail v-else divider :value="currentPage">
-    <mdui-avatar src="/icon.webp" slot="top"></mdui-avatar>
-    <mdui-fab lowered slot="top" href="/auth/login" @click.prevent="navigateTo('/auth/login')"><mdui-icon-login
-        slot="icon"></mdui-icon-login></mdui-fab>
+    <mdui-avatar src="/icon.webp" slot="top" alt="图标"></mdui-avatar>
+    <mdui-fab lowered slot="top" href="/auth/login" @click.prevent="navigateTo('/auth/login')"
+      aria-label="登录"><mdui-icon-login slot="icon"></mdui-icon-login></mdui-fab>
     <mdui-navigation-rail-item href="/" value="/" @click.prevent="navigateTo('/')"><mdui-icon-home
         slot="active-icon"></mdui-icon-home><mdui-icon-home--outlined slot="icon"
         alt="首页"></mdui-icon-home--outlined>首页</mdui-navigation-rail-item>
@@ -24,12 +24,13 @@
         slot="active-icon"></mdui-icon-favorite><mdui-icon-favorite-border
         slot="icon"></mdui-icon-favorite-border>好感度</mdui-navigation-rail-item>
     <mdui-button-icon href="https://github.com/Big-Cake-jpg/aronahelper-favorability-board" target="_blank"
-      slot="bottom" alt="源代码"><mdui-tooltip placement="right"
+      slot="bottom" alt="源代码" aria-label="源代码"><mdui-tooltip placement="right"
         content="源代码"><mdui-icon-source></mdui-icon-source></mdui-tooltip></mdui-button-icon>
-    <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式"><mdui-tooltip placement="right"
+    <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式" aria-label="切换模式"><mdui-tooltip placement="right"
         content="切换模式"><mdui-icon-brightness-6></mdui-icon-brightness-6></mdui-tooltip></mdui-button-icon>
-    <mdui-button-icon slot="bottom" alt="设置" href="/settings" @click.prevent="navigateTo('/settings')"><mdui-tooltip
-        placement="right" content="设置"><mdui-icon-settings></mdui-icon-settings></mdui-tooltip></mdui-button-icon>
+    <mdui-button-icon slot="bottom" alt="设置" href="/settings" @click.prevent="navigateTo('/settings')"
+      aria-label="设置"><mdui-tooltip placement="right"
+        content="设置"><mdui-icon-settings></mdui-icon-settings></mdui-tooltip></mdui-button-icon>
   </mdui-navigation-rail>
 </template>
 
