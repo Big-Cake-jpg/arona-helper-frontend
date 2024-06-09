@@ -1,6 +1,6 @@
 <template>
     <mdui-card class="p-5 mt-10 sm:w-80%">
-        <mdui-avatar src="/icon.png"></mdui-avatar>
+        <mdui-avatar src="/icon.webp"></mdui-avatar>
         <p class="mdui-prose">使用该一次性代码登录到您的账户。</p>
         <div>
             <mdui-text-field :disabled="isTimeUp" ref="textField" @click="copyCode" class="max-w-lg"

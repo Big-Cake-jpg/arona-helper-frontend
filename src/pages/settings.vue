@@ -51,6 +51,16 @@ import 'mdui/components/collapse-item.js';
 import 'mdui/components/switch.js';
 import { useTitle } from '@vueuse/core';
 import { version } from '../../package.json';
+import { useSeoMeta } from '@unhead/vue';
+
+useSeoMeta({
+    title: '设置 - 阿罗娜小助手',
+    description: '有关前端服务的各项设置',
+    ogDescription: '有关前端服务的各项设置',
+    ogTitle: '设置 - 阿罗娜小助手',
+    ogImage: 'https://arona.lihaoyu.cn/icon.webp',
+    // twitterCard: 'summary_large_image',
+})
 
 useTitle("设置 - 阿罗娜小助手")
 

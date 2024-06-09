@@ -13,8 +13,10 @@
                     slot="icon"></mdui-icon-account-circle></mdui-text-field>
             <mdui-select placeholder="排序方式">
                 <mdui-icon-filter-list slot="icon"></mdui-icon-filter-list>
-                <mdui-menu-item value="favorability"><mdui-icon-keyboard-double-arrow-down slot="icon"></mdui-icon-keyboard-double-arrow-down>正序</mdui-menu-item>
-                <mdui-menu-item value="level"><mdui-icon-keyboard-double-arrow-up slot="icon"></mdui-icon-keyboard-double-arrow-up>倒序</mdui-menu-item>
+                <mdui-menu-item value="favorability"><mdui-icon-keyboard-double-arrow-down
+                        slot="icon"></mdui-icon-keyboard-double-arrow-down>正序</mdui-menu-item>
+                <mdui-menu-item value="level"><mdui-icon-keyboard-double-arrow-up
+                        slot="icon"></mdui-icon-keyboard-double-arrow-up>倒序</mdui-menu-item>
             </mdui-select>
         </div>
         <mdui-button full-width><mdui-icon-search slot="icon"></mdui-icon-search>搜索</mdui-button>
@@ -65,6 +67,16 @@ import '@mdui/icons/search.js';
 import '@mdui/icons/keyboard-double-arrow-up.js';
 import '@mdui/icons/keyboard-double-arrow-down.js';
 import { useTitle } from '@vueuse/core';
+import { useSeoMeta } from '@unhead/vue';
+
+useSeoMeta({
+    title: '好感度面板 - 阿罗娜小助手',
+    description: '字如其意，看看你和哪个学生最亲密呢？',
+    ogDescription: '字如其意，看看你和哪个学生最亲密呢？',
+    ogTitle: '首页 - 阿罗娜小助手',
+    ogImage: 'https://arona.lihaoyu.cn/icon.webp',
+    // twitterCard: 'summary_large_image',
+})
 
 useTitle("好感度面板 - 阿罗娜小助手")
 </script>

@@ -6,6 +6,7 @@ import './assets/nprogress.css'
 import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'
 import { useNProgress } from '@vueuse/integrations/useNProgress'
+import { createHead } from '@unhead/vue'
 // @ts-expect-error
 import routes from '~pages'
 
@@ -19,6 +20,7 @@ export const createApp = ViteSSG(
   // function to have custom setups
   ({ app, router, routes, isClient, initialState }) => {
     app.use(createPinia())
+    app.use(createHead())
     if (isClient) {
       const { isLoading } = useNProgress(null, {
         showSpinner: false,

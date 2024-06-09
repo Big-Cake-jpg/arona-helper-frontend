@@ -9,10 +9,11 @@
         slot="icon"></mdui-icon-favorite-border>好感度</mdui-navigation-bar-item>
     <mdui-navigation-bar-item href="/settings" value="/settings"
       @click.prevent="navigateTo('/settings')"><mdui-icon-settings
-        slot="active-icon"></mdui-icon-settings><mdui-icon-settings--outlined slot="icon"></mdui-icon-settings--outlined>设置</mdui-navigation-bar-item>
+        slot="active-icon"></mdui-icon-settings><mdui-icon-settings--outlined
+        slot="icon"></mdui-icon-settings--outlined>设置</mdui-navigation-bar-item>
   </mdui-navigation-bar>
   <mdui-navigation-rail v-else divider :value="currentPage">
-    <mdui-avatar src="/icon.png" slot="top"></mdui-avatar>
+    <mdui-avatar src="/icon.webp" slot="top"></mdui-avatar>
     <mdui-fab lowered slot="top" href="/auth/login" @click.prevent="navigateTo('/auth/login')"><mdui-icon-login
         slot="icon"></mdui-icon-login></mdui-fab>
     <mdui-navigation-rail-item href="/" value="/" @click.prevent="navigateTo('/')"><mdui-icon-home
@@ -27,8 +28,8 @@
         content="源代码"><mdui-icon-source></mdui-icon-source></mdui-tooltip></mdui-button-icon>
     <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式"><mdui-tooltip placement="right"
         content="切换模式"><mdui-icon-brightness-6></mdui-icon-brightness-6></mdui-tooltip></mdui-button-icon>
-    <mdui-button-icon slot="bottom" alt="设置" href="/settings" @click.prevent="navigateTo('/settings')"><mdui-tooltip placement="right"
-        content="设置"><mdui-icon-settings></mdui-icon-settings></mdui-tooltip></mdui-button-icon>
+    <mdui-button-icon slot="bottom" alt="设置" href="/settings" @click.prevent="navigateTo('/settings')"><mdui-tooltip
+        placement="right" content="设置"><mdui-icon-settings></mdui-icon-settings></mdui-tooltip></mdui-button-icon>
   </mdui-navigation-rail>
 </template>
 

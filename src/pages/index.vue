@@ -24,6 +24,17 @@ import 'mdui/components/badge.js';
 import '@mdui/icons/account-circle.js';
 import '@mdui/icons/arrow-forward.js';
 import { useTitle } from '@vueuse/core';
+import { useSeoMeta } from '@unhead/vue';
 
 useTitle("首页 - 阿罗娜小助手")
+
+useSeoMeta({
+    title: '首页 - 阿罗娜小助手',
+    description: 'QQ 机器人 阿罗娜小助手 配套前端服务',
+    ogDescription: 'QQ 机器人 阿罗娜小助手 配套前端服务',
+    ogTitle: '首页 - 阿罗娜小助手',
+    ogImage: 'https://arona.lihaoyu.cn/icon.webp',
+    // twitterCard: 'summary_large_image',
+})
+
 </script>

@@ -1,6 +1,6 @@
 {
   "name": "arona-helper-frontend",
-  "version": "1.40-A",
+  "version": "1.00-A",
   "private": true,
   "type": "module",
   "scripts": {
