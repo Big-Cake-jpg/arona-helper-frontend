@@ -75,7 +75,7 @@ export default {
 
         const getLoginCode = async () => {
             try {
-                const response = await axios.get('https://api-arona.230225.xyz/account/login/code/get')
+                const response = await axios.get('https://api-arona.lihaoyu.cn/account/login/code/get')
                 const data = await response.data
                 logincode.value = data.data?.auth_code
                 countdown.value = data.data?.exp
