@@ -15,5 +15,10 @@ export default async function getTokenInfo() {
     if (!token) return null
     const { header, payload } = useJwt(token)
     console.log(header.value)
-    return payload.value as TokenPayload
+    try {
+        return payload.value as TokenPayload
+    } catch (e) {
+        console.error(e)
+        return null
+    }
 }
