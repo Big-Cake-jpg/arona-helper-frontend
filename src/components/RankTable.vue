@@ -27,7 +27,7 @@
             <tbody>
                 <tr v-for="item in data" :key="item.uid">
                     <td>{{ item.uid }}</td>
-                    <td><mdui-avatar src="https://arona.lihaoyu.cn/icon.webp" fit="scale-down" label="User Avatar"></mdui-avatar>{{ item.nick }}</td>
+                    <td><mdui-avatar :src="item.avatar" fit="scale-down" label="User Avatar"></mdui-avatar>{{ item.nick }}</td>
                     <td>{{ item.stu }}</td>
                     <td>{{ item.level }}</td>
                     <td>{{ item.grade }}</td>
@@ -61,6 +61,7 @@ import axios from 'axios';
 interface DataItem {
   uid: string;
   nick: string;
+  avatar: URL;
   stu: any[]; // 根据您的需求，这里可以进一步定义数组内部的类型
   level: number;
   grade: number;
