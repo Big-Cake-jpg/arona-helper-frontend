@@ -56,7 +56,15 @@ import { ref, onMounted, computed } from 'vue';
 import { snackbar } from 'mdui/functions/snackbar.js'
 import axios from 'axios';
 
-const data = ref([]);
+interface DataItem {
+  uid: string;
+  nick: string;
+  stu: any[]; // 根据您的需求，这里可以进一步定义数组内部的类型
+  level: number;
+  grade: number;
+}
+
+const data = ref<DataItem[]>([]);
 const currentPage = ref(1);
 const numPerPage = ref(10);
 const reverse = ref(false);
