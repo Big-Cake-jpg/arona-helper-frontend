@@ -1,5 +1,5 @@
 <template>
-    <mdui-card class="p-5 mt-10 sm:w-80%">
+    <mdui-card class="p-5 my-10 sm:w-80%">
         <mdui-avatar src="/icon.webp"></mdui-avatar>
         <p class="mdui-prose">使用该一次性代码登录到您的账户。</p>
         <div>
@@ -8,7 +8,9 @@
                     slot="icon"></mdui-icon-code></mdui-text-field>
             <div v-if="isTimeUp">
                 <p class="mdui-prose">一次性代码已过期，请重新获取。</p>
-                <mdui-button @click="getLoginCode">重新获取<mdui-icon-refresh slot="icon"></mdui-icon-refresh></mdui-button>
+                <mdui-button @click="getLoginCode" :loading="isRefreshing"
+                    :disabled="isRefreshButtonDisabled">重新获取<mdui-icon-refresh
+                        slot="icon"></mdui-icon-refresh></mdui-button>
             </div>
             <p v-else>
                 该代码将在 <b>{{ countdown }}</b> 秒后过期。
@@ -19,16 +21,18 @@
 </template>
 
 <script lang="ts">
-import 'mdui/components/text-field.js'
-import 'mdui/components/card.js'
-import { snackbar } from 'mdui/functions/snackbar.js'
-import { dialog } from 'mdui/functions/dialog.js'
 import '@mdui/icons/code.js'
 import '@mdui/icons/info--outlined.js'
-import '@mdui/icons/refresh.js';
-import { ref, onMounted, watchEffect } from 'vue'
+import '@mdui/icons/refresh.js'
 import { useClipboard } from '@vueuse/core'
+import { useCookies } from '@vueuse/integrations/useCookies'
 import axios from 'axios'
+import 'mdui/components/card.js'
+import 'mdui/components/text-field.js'
+import { dialog } from 'mdui/functions/dialog.js'
+import { snackbar } from 'mdui/functions/snackbar.js'
+import { onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
     setup() {
@@ -37,6 +41,12 @@ export default {
         const logincode = ref('')
         const { copy } = useClipboard()
         const textField = ref(null)
+        const cookies = useCookies(['token'])
+        const router = useRouter();
+        const apiRoot = import.meta.env.VITE_API_ROOT
+        const isRefreshButtonDisabled = ref(false)
+        const isRefreshing = ref(false)
+        let intervalId: number | null = null
 
         const copyCode = async () => {
             try {
@@ -75,7 +85,9 @@ export default {
 
         const getLoginCode = async () => {
             try {
-                const response = await axios.get('https://api-arona.lihaoyu.cn/account/login/code/get')
+                isRefreshButtonDisabled.value = true
+                isRefreshing.value = true
+                const response = await axios.get(`${apiRoot}/account/login/code/get`)
                 const data = await response.data
                 logincode.value = data.data?.auth_code
                 countdown.value = data.data?.exp
@@ -87,6 +99,8 @@ export default {
                     } else {
                         clearInterval(timer)
                         isTimeUp.value = true
+                        isRefreshButtonDisabled.value = false
+                        isRefreshing.value = false
                     }
                 }, 1000)
             } catch (err) {
@@ -94,6 +108,48 @@ export default {
                     message: '获取登录代码失败，请稍后重试',
                     closeable: true
                 })
+                console.error('获取登录代码失败，错误信息：', err)
+                isTimeUp.value = true
+                isRefreshButtonDisabled.value = false
+                isRefreshing.value = false
+            }
+        }
+
+        const pollVerificationStatus = () => {
+            intervalId = setInterval(async () => {
+                try {
+                    const response = await axios.get(`${apiRoot}/account/login/code/check`, {
+                        params: { code: logincode.value }
+                    })
+                    if (response.status === 200) {
+                        cookies.set('token', response.data.data?.token, { path: '/', expires: new Date(response.data.data?.expire_on * 1000) })
+                        snackbar({
+                            message: '登录成功',
+                            closeable: true
+                        })
+                        if (intervalId !== null) {
+                            clearInterval(intervalId);
+                            intervalId = null;
+                        }
+                        router.push('/');
+                    }
+                } catch {
+                }
+            }, 5000) as number // 每 5 秒轮询一次
+        }
+
+        const checkLoginStatus = () => {
+            try {
+                const token = cookies.get('token')
+                if (token) {
+                    snackbar({
+                        message: '你已经登录过啦 ╰（‵□′）╯',
+                        closeable: true,
+                    })
+                    router.push('/')
+                }
+            } catch(error) {
+                console.error('无法检查登录状态，错误信息：', error)
             }
         }
 
@@ -102,17 +158,29 @@ export default {
                 if (logincode.value) {
                     // @ts-expect-error
                     textField.value?.focus()
-                } else {
-                }
+                } 
             })
 
             try {
+                checkLoginStatus();
                 getLoginCode();
-            } catch (err) {
+            } catch (error) {
                 snackbar({
                     message: '获取登录代码失败，请稍后重试',
                     closeable: true
                 })
+                console.error('获取登录代码失败，错误信息：', error)
+                isTimeUp.value = true
+                isRefreshButtonDisabled.value = false
+                isRefreshing.value = false
+            }
+
+            pollVerificationStatus();
+        })
+
+        onBeforeUnmount(() => {
+            if (intervalId !== null) {
+                clearInterval(intervalId)
             }
         })
 
@@ -124,6 +192,9 @@ export default {
             showHelpDialog,
             textField,
             getLoginCode,
+            pollVerificationStatus,
+            isRefreshButtonDisabled,
+            isRefreshing,
         }
     }
 }

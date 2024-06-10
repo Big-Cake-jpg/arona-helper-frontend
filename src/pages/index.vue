@@ -25,6 +25,11 @@ import '@mdui/icons/account-circle.js';
 import '@mdui/icons/arrow-forward.js';
 import { useTitle } from '@vueuse/core';
 import { useSeoMeta } from '@unhead/vue';
+import { useCookies } from '@vueuse/integrations/useCookies.mjs';
+
+
+const cookies = useCookies(['token']);
+const token = cookies.get('token')
 
 useTitle("首页 - 阿罗娜小助手")
 

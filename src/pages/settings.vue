@@ -18,6 +18,12 @@
                 </div>
                 <mdui-switch checked></mdui-switch>
             </div>
+            <div class="flex items-stretch justify-between">
+                <div class="self-center">
+                    <h4>使用备选字段</h4>
+                </div>
+                <mdui-switch></mdui-switch>
+            </div>
             <mdui-divider class="mt-3"></mdui-divider>
             <h3>类别</h3>
             <h4>设置项</h4>

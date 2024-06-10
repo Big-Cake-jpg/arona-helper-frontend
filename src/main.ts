@@ -12,6 +12,8 @@ import routes from '~pages'
 
 import App from './App.vue'
 
+import refreshToken from './utils/refreshToken'
+
 export const createApp = ViteSSG(
   // the root component
   App,
@@ -22,6 +24,8 @@ export const createApp = ViteSSG(
     app.use(createPinia())
     app.use(createHead())
     if (isClient) {
+      refreshToken()
+      
       const { isLoading } = useNProgress(null, {
         showSpinner: false,
       })
