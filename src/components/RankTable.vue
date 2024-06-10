@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-2 gap-4 pt-5 pb-5">
-    <mdui-text-field label="ID" v-model="searchUID" placeholder="815797" clearable><mdui-icon-numbers
+    <mdui-text-field label="ID" placeholder="815797" clearable><mdui-icon-numbers
         slot="icon"></mdui-icon-numbers></mdui-text-field>
     <mdui-text-field label="角色名" @input="searchStudent = $event.target.value" placeholder="爱丽丝"
       clearable><mdui-icon-account-circle slot="icon"></mdui-icon-account-circle></mdui-text-field>
@@ -117,8 +117,7 @@ const queryRank = async () => {
 }
 
 const checkLogin = async () => {
-  const dataPayload = await getTokenInfo()
-  if (dataPayload) searchUID.value = dataPayload.user_id
+  // TODO
   fetchData()
 }
 
