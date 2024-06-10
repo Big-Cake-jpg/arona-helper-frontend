@@ -19,6 +19,7 @@
       <thead>
         <tr>
           <th>UID</th>
+          <td>头像</td>
           <th>昵称</th>
           <th>学生</th>
           <th>好感度经验</th>
@@ -28,8 +29,9 @@
       <tbody>
         <tr v-for="item in data" :key="item.uid">
           <td>{{ item.uid }}</td>
-          <td><mdui-avatar :src="item.avatar" fit="scale-down" label="User Avatar"></mdui-avatar>{{ item.nick
-            }}</td>
+          <td style="vertical-align: middle;"><mdui-avatar :src="item.avatar" fit="scale-down"
+              label="User Avatar"></mdui-avatar></td>
+          <td>{{ item.nick }}</td>
           <td>{{ item.stu }}</td>
           <td>{{ item.level }}</td>
           <td>{{ item.grade }}</td>
@@ -126,3 +128,14 @@ onMounted(async () => {
 }
 );
 </script>
+
+<style scoped>
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+  vertical-align: middle;
+}
+</style>
