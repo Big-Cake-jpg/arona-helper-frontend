@@ -9,7 +9,7 @@ export default async function refreshToken() {
   if (token) {
     try {
       const response = await axios.post(
-        `${apiRoot}/account/login/code/refresh`,
+        `${apiRoot}/account/login/refresh`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       )
