@@ -10,6 +10,7 @@ declare module 'vue' {
     AppLink: typeof import('./src/components/AppLink.vue')['default']
     LoginCard: typeof import('./src/components/loginCard.vue')['default']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
+    RankTable: typeof import('./src/components/RankTable.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

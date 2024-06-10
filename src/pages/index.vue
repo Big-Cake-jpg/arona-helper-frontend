@@ -1,6 +1,7 @@
 <template>
     <div class="mdui-prose max-w-3xl m-auto">
         <h1>首页 <mdui-badge variant="large">新版测试</mdui-badge></h1>
+        <h2>欢迎回来！</h2>
         <p>欢迎使用阿罗娜机器人前端服务！</p>
         <p>目前还没有做什么实际功能，仅用于 UI 预览。</p>
         <blockquote><del>什么人啊这都，才写个 UI 都能写成屎山</del></blockquote>

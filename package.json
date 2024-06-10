@@ -1,6 +1,6 @@
 {
   "name": "arona-helper-frontend",
-  "version": "1.00-A",
+  "version": "1.10-A",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,6 +20,7 @@
     "@vueuse/integrations": "^10.10.0",
     "@vueuse/shared": "^10.10.0",
     "axios": "^1.7.2",
+    "jwt-decode": "3",
     "mdui": "^2.1.1",
     "nprogress": "0",
     "pinia": "^2.1.7",
