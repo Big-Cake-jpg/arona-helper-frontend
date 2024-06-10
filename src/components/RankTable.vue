@@ -27,7 +27,7 @@
             <tbody>
                 <tr v-for="item in data" :key="item.uid">
                     <td>{{ item.uid }}</td>
-                    <td>{{ item.nick }}</td>
+                    <td><mdui-avatar src="https://arona.lihaoyu.cn/icon.webp" fit="scale-down" label="User Avatar"></mdui-avatar>{{ item.nick }}</td>
                     <td>{{ item.stu }}</td>
                     <td>{{ item.level }}</td>
                     <td>{{ item.grade }}</td>
@@ -43,6 +43,7 @@
 </template>
 
 <script setup lang="ts">
+import 'mdui/components/avatar.js';
 import 'mdui/components/checkbox.js';
 import 'mdui/components/linear-progress.js';
 import 'mdui/components/text-field.js';
@@ -52,6 +53,7 @@ import '@mdui/icons/numbers.js';
 import '@mdui/icons/filter-list.js';
 import '@mdui/icons/search.js';
 import '@mdui/icons/menu-book.js';
+import '@mdui/icons/people-alt.js';
 import { ref, onMounted, computed } from 'vue';
 import { snackbar } from 'mdui/functions/snackbar.js'
 import axios from 'axios';

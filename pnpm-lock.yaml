@@ -30,7 +30,7 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2
       jwt-decode:
-        specifier: '3'
+        specifier: ^3.1.2
         version: 3.1.2
       mdui:
         specifier: ^2.1.1
