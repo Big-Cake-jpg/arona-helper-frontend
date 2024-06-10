@@ -18,6 +18,7 @@
     <table>
       <thead>
         <tr>
+          <th>排名</th>
           <th>UID</th>
           <td>头像</td>
           <th>昵称</th>
@@ -28,6 +29,7 @@
       </thead>
       <tbody>
         <tr v-for="item in data" :key="item.uid">
+          <td>{{ item.rank }}</td>
           <td>{{ item.uid }}</td>
           <td style="vertical-align: middle;"><mdui-avatar :src="item.avatar" fit="scale-down"
               label="User Avatar"></mdui-avatar></td>
@@ -64,6 +66,7 @@ import getTokenInfo from '@/utils/getTokenInfo';
 import axios from 'axios';
 
 interface DataItem {
+  rank: number;
   uid: string;
   nick: string;
   avatar: URL;
@@ -95,7 +98,6 @@ const fetchData = async () => {
       },
     });
     if (response.data.status === 200) {
-      console.log(`total page => ${response.data.data?.total_page} / total count => ${response.data.data?.total_count}`)
       data.value = response.data.data?.data;
       total_pages.value = response.data.data?.total_page;
       isRankFetched.value = true
