@@ -4,10 +4,11 @@
         <p class="mdui-prose">使用该一次性代码登录到您的账户。</p>
         <div>
             <mdui-text-field :disabled="isTimeUp" ref="textField" @click="copyCode" class="max-w-lg"
-                :class="{ 'blur-field': isTimeUp }" readonly label="一次性代码" :value="logincode"><mdui-icon-code
-                    slot="icon"></mdui-icon-code></mdui-text-field>
-            <div v-if="isTimeUp">
-                <p class="mdui-prose">一次性代码已过期，请重新获取。</p>
+                :class="{ 'blur-field': isTimeUp || isFetchFailed }" readonly label="一次性代码"
+                :value="logincode"><mdui-icon-code slot="icon"></mdui-icon-code></mdui-text-field>
+            <div v-if="isTimeUp || isFetchFailed">
+                <p class="mdui-prose" v-if="isTimeUp">一次性代码已过期，请重新获取。</p>
+                <p class="mdui-prose" v-if="isFetchFailed">一次性代码获取失败，请重试。</p>
                 <mdui-button @click="getLoginCode" :loading="isRefreshing"
                     :disabled="isRefreshButtonDisabled">重新获取<mdui-icon-refresh
                         slot="icon"></mdui-icon-refresh></mdui-button>
@@ -38,6 +39,7 @@ export default {
     setup() {
         const countdown = ref(120)
         const isTimeUp = ref(false)
+        const isFetchFailed = ref(false);
         const logincode = ref('')
         const { copy } = useClipboard()
         const textField = ref(null)
@@ -87,6 +89,7 @@ export default {
             try {
                 isRefreshButtonDisabled.value = true
                 isRefreshing.value = true
+                isFetchFailed.value = false
                 const response = await axios.get(`${apiRoot}/account/login/code/get`)
                 const data = await response.data
                 logincode.value = data.data?.auth_code
@@ -109,7 +112,7 @@ export default {
                     closeable: true
                 })
                 console.error('获取登录代码失败，错误信息：', err)
-                isTimeUp.value = true
+                isFetchFailed.value = true
                 isRefreshButtonDisabled.value = false
                 isRefreshing.value = false
             }
@@ -148,7 +151,7 @@ export default {
                     })
                     router.push('/')
                 }
-            } catch(error) {
+            } catch (error) {
                 console.error('无法检查登录状态，错误信息：', error)
             }
         }
@@ -158,7 +161,7 @@ export default {
                 if (logincode.value) {
                     // @ts-expect-error
                     textField.value?.focus()
-                } 
+                }
             })
 
             try {
@@ -187,6 +190,7 @@ export default {
         return {
             countdown,
             isTimeUp,
+            isFetchFailed,
             logincode,
             copyCode,
             showHelpDialog,
