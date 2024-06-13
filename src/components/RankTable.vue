@@ -37,8 +37,8 @@
         <tr v-for="item in data" :key="item.uid">
           <td>{{ item.rank }}</td>
           <td>{{ item.uid }}</td>
-          <td style="vertical-align: middle;"><mdui-avatar :src="item.avatar" fit="scale-down"
-              label="User Avatar"></mdui-avatar></td>
+          <td style="vertical-align: middle;"><mdui-avatar :src="`${apiRoot}/account/avatar?uid=${item.uid}`"
+              fit="scale-down" label="User Avatar"></mdui-avatar></td>
           <td>{{ item.nick }}</td>
           <td>{{ item.stu }}</td>
           <td>{{ item.level }}</td>
@@ -74,7 +74,6 @@ interface DataItem {
   rank: number;
   uid: string;
   nick: string;
-  avatar: URL;
   stu: any[]; // 根据您的需求，这里可以进一步定义数组内部的类型
   level: number;
   grade: number;
