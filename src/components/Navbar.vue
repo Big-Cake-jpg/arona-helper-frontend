@@ -14,8 +14,10 @@
   </mdui-navigation-bar>
   <mdui-navigation-rail v-else divider :value="currentPage">
     <mdui-avatar src="/icon.webp" slot="top" alt="图标"></mdui-avatar>
-    <mdui-fab lowered slot="top" href="/auth/login" @click.prevent="navigateTo('/auth/login')"
-      aria-label="Login"><mdui-icon-login slot="icon"></mdui-icon-login></mdui-fab>
+    <mdui-fab lowered slot="top" v-if="isLoggedIn" aria-label="Logout" @click="logOut"><mdui-icon-logout
+        slot="icon"></mdui-icon-logout></mdui-fab>
+    <mdui-fab lowered slot="top" href="/auth/login" @click.prevent="navigateTo('/auth/login')" aria-label="Login"
+      v-else><mdui-icon-login slot="icon"></mdui-icon-login></mdui-fab>
     <mdui-navigation-rail-item href="/" value="/" @click.prevent="navigateTo('/')"><mdui-icon-home
         slot="active-icon"></mdui-icon-home><mdui-icon-home--outlined slot="icon"
         alt="首页"></mdui-icon-home--outlined>首页</mdui-navigation-rail-item>
@@ -26,7 +28,8 @@
     <mdui-button-icon href="https://github.com/Big-Cake-jpg/aronahelper-favorability-board" target="_blank"
       slot="bottom" alt="源代码" aria-label="Source Code"><mdui-tooltip placement="right"
         content="源代码"><mdui-icon-source></mdui-icon-source></mdui-tooltip></mdui-button-icon>
-    <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式" aria-label="Change mode"><mdui-tooltip placement="right"
+    <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式" aria-label="Change mode"><mdui-tooltip
+        placement="right"
         content="切换模式"><mdui-icon-brightness-6></mdui-icon-brightness-6></mdui-tooltip></mdui-button-icon>
     <mdui-button-icon slot="bottom" alt="设置" href="/settings" @click.prevent="navigateTo('/settings')"
       aria-label="Settings"><mdui-tooltip placement="right"
@@ -54,12 +57,16 @@ import '@mdui/icons/favorite-border.js';
 import '@mdui/icons/favorite.js';
 import '@mdui/icons/source.js';
 import '@mdui/icons/settings--outlined.js';
+import '@mdui/icons/logout.js';
 
 import { setTheme } from 'mdui/functions/setTheme.js';
 import { useDark } from "@vueuse/core";
 import { useToggle } from "@vueuse/shared";
 import { ref, onMounted, watch, onUnmounted, computed, watchEffect } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useCookies } from '@vueuse/integrations/useCookies';
+import { confirm } from 'mdui/functions/confirm.js';
+import { snackbar } from 'mdui/functions/snackbar.js'
 
 export default {
   setup() {
@@ -68,6 +75,37 @@ export default {
     const currentPage = ref(route.path);
     const router = useRouter();
     const windowWidth = ref(window.innerWidth);
+    const isLoggedIn = ref(false);
+    const cookies = useCookies(['token'])
+
+    try {
+      const token = cookies.get('token')
+      if (token) {
+        isLoggedIn.value = true
+      }
+    } catch (error) {
+      console.error("无法检查登录状态，错误信息：", error)
+    };
+
+    const logOut = () => {
+      confirm({
+        headline: '退出登录',
+        description: '确定要退出登录吗？',
+        confirmText: "退出登录",
+        cancelText: "手滑了",
+        onConfirm: () => {
+          cookies.remove('token')
+          snackbar({
+            message: '已退出登录',
+            closeable: true
+          });
+          setTimeout(() => window.location.reload(), 2000);
+        },
+        onCancel: () => console.log('已取消退出登录操作')
+      }).catch((error) => {
+
+      });
+    }
 
     const updateWindowWidth = () => {
       windowWidth.value = window.innerWidth;
@@ -83,7 +121,7 @@ export default {
 
     function navigateTo(path) {
       router.push(path);
-    }
+    };
 
     watch(route, (to) => {
       currentPage.value = to.path;
@@ -110,6 +148,8 @@ export default {
       isMobile,
       currentPage,
       navigateTo,
+      isLoggedIn,
+      logOut,
     };
   },
 };

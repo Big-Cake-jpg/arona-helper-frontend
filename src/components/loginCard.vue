@@ -32,7 +32,7 @@ import 'mdui/components/card.js'
 import 'mdui/components/text-field.js'
 import { dialog } from 'mdui/functions/dialog.js'
 import { snackbar } from 'mdui/functions/snackbar.js'
-import { onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
+import { onBeforeUnmount, onMounted, onBeforeMount, ref, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 
 export default {
@@ -125,6 +125,7 @@ export default {
                         params: { code: logincode.value }
                     })
                     if (response.status === 200) {
+                        console.log("已获取到登录令牌")
                         cookies.set('token', response.data.data?.token, { path: '/', expires: new Date(response.data.data?.expire_on * 1000) })
                         snackbar({
                             message: '登录成功',
@@ -136,7 +137,7 @@ export default {
                         }
                         router.push('/');
                     }
-                } catch {
+                } catch (error) {
                 }
             }, 5000) as number // 每 5 秒轮询一次
         }
@@ -145,6 +146,7 @@ export default {
             try {
                 const token = cookies.get('token')
                 if (token) {
+                    console.log("登录令牌存在，用户可能已登录")
                     snackbar({
                         message: '你已经登录过啦 ╰（‵□′）╯',
                         closeable: true,
@@ -165,7 +167,6 @@ export default {
             })
 
             try {
-                checkLoginStatus();
                 getLoginCode();
             } catch (error) {
                 snackbar({
@@ -179,6 +180,10 @@ export default {
             }
 
             pollVerificationStatus();
+        })
+
+        onBeforeMount(async () => {
+            checkLoginStatus();
         })
 
         onBeforeUnmount(() => {
