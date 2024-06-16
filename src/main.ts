@@ -25,9 +25,9 @@ export const createApp = ViteSSG(
     app.use(createHead())
     if (isClient) {
       refreshToken()
-      
+
       const { isLoading } = useNProgress(null, {
-        showSpinner: false,
+        showSpinner: false
       })
 
       router.beforeEach(() => {

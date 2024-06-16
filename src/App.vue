@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { setColorScheme } from 'mdui/functions/setColorScheme.js';
+import { setColorScheme } from 'mdui/functions/setColorScheme.js'
 
-setColorScheme('#5cabff');
+setColorScheme('#5cabff')
 </script>
 
 <template>

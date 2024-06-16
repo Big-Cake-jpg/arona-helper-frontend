@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useTitle } from '@vueuse/core';
+import { useHead } from '@unhead/vue';
 
-useTitle("登录 - 阿罗娜小助手")
+useHead({ title: '登录 - 阿罗娜小助手', })
 </script>

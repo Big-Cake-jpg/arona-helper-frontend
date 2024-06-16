@@ -15,7 +15,7 @@
 import 'mdui/components/button.js';
 import '@mdui/icons/arrow-forward.js';
 import '@mdui/icons/home.js';
-import { useTitle } from '@vueuse/core';
+import { useHead } from '@unhead/vue';
 
-useTitle("未找到页面 - 阿罗娜小助手")
+useHead({ title: '未找到页面 - 阿罗娜小助手', })
 </script>
