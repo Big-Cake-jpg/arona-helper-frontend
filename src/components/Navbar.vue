@@ -24,7 +24,7 @@
   </mdui-navigation-bar>
   <mdui-navigation-rail v-else divider :value="currentPage">
     <mdui-avatar src="/icon.webp" slot="top" alt="图标"></mdui-avatar>
-    <mdui-fab lowered slot="top" v-if="isLoggedIn" aria-label="Logout" @click="logOut"
+    <mdui-fab lowered slot="top" v-if="isLoggedIn" @click="logOut"
       ><mdui-icon-logout slot="icon"></mdui-icon-logout
     ></mdui-fab>
     <mdui-fab
@@ -32,7 +32,6 @@
       slot="top"
       href="/auth/login"
       @click.prevent="navigateTo('/auth/login')"
-      aria-label="Login"
       v-else
       ><mdui-icon-login slot="icon"></mdui-icon-login
     ></mdui-fab>
@@ -54,11 +53,10 @@
       target="_blank"
       slot="bottom"
       alt="源代码"
-      aria-label="Source Code"
       ><mdui-tooltip placement="right" content="源代码"
         ><mdui-icon-source></mdui-icon-source></mdui-tooltip
     ></mdui-button-icon>
-    <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式" aria-label="Change mode"
+    <mdui-button-icon @click="toggleDark()" slot="bottom" alt="切换模式"
       ><mdui-tooltip placement="right" content="切换模式"
         ><mdui-icon-brightness-6></mdui-icon-brightness-6></mdui-tooltip
     ></mdui-button-icon>
@@ -67,7 +65,6 @@
       alt="设置"
       href="/settings"
       @click.prevent="navigateTo('/settings')"
-      aria-label="Settings"
       ><mdui-tooltip placement="right" content="设置"
         ><mdui-icon-settings></mdui-icon-settings></mdui-tooltip
     ></mdui-button-icon>
