@@ -110,6 +110,7 @@ const apiRoot = import.meta.env.VITE_API_ROOT
 const uid = ref('')
 const isLoggedIn = ref(false)
 const nickName = ref('')
+const errmsg = ref('')
 
 useSeoMeta({
   title: '设置 - 阿罗娜小助手',
@@ -186,11 +187,19 @@ export default {
                 closeable: true
               })
               nickName.value = value
+            } else if (response.status === 403) {
+              snackbar({
+                message: '昵称违规，请选择其他昵称',
+                closeable: true
+              })
+            }
+            if (response.data?.msg) {
+              errmsg.value = response.data.msg
             }
           } catch (error) {
             console.error('修改昵称时出现错误：', error)
             snackbar({
-              message: '修改昵称失败，请检查网络连接',
+              message: '修改昵称失败，详细信息：' + error,
               closeable: true
             })
           }
