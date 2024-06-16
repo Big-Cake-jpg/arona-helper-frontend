@@ -27,10 +27,10 @@
       <div v-else>
         <h4>您尚未登录</h4>
         <RouterLink to="/auth/login"
-      ><mdui-button
-        >立刻登录<mdui-icon-account-circle slot="icon"></mdui-icon-account-circle
-        ><mdui-icon-arrow-forward slot="end-icon"></mdui-icon-arrow-forward></mdui-button
-    ></RouterLink>
+          ><mdui-button
+            >立刻登录<mdui-icon-account-circle slot="icon"></mdui-icon-account-circle
+            ><mdui-icon-arrow-forward slot="end-icon"></mdui-icon-arrow-forward></mdui-button
+        ></RouterLink>
       </div>
     </mdui-card>
     <mdui-card class="p-5 w-100% my-2.5">
@@ -107,8 +107,6 @@ import { useRouter, type RouteLocationRaw } from 'vue-router'
 import { version } from '../../package.json'
 
 const apiRoot = import.meta.env.VITE_API_ROOT
-const cookies = useCookies(['token'])
-const token = cookies.get('token')
 const uid = ref('')
 const isLoggedIn = ref(false)
 const nickName = ref('')
@@ -132,8 +130,10 @@ export default {
   },
 
   setup() {
+    const cookies = useCookies(['token'])
+    const token = cookies.get('token')
     const router = useRouter()
-    
+
     if (token) {
       getTokenInfo()
         .then((res) => {

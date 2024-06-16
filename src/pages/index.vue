@@ -23,7 +23,7 @@
 import '@mdui/icons/account-circle.js'
 import '@mdui/icons/arrow-forward.js'
 import { useHead, useSeoMeta } from '@unhead/vue'
-import { useCookies } from '@vueuse/integrations/useCookies.mjs'
+import { useCookies } from '@vueuse/integrations/useCookies'
 import 'mdui/components/badge.js'
 import 'mdui/components/button.js'
 import 'mdui/components/card.js'
