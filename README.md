@@ -10,7 +10,7 @@ QQ 机器人 阿罗娜小助手 配套前端服务
 - Vue 3、Vite 5 - 极致快速
 - Material You - 美观耐看
 - pnpm、ESLint、Prettier - 开发便捷
-- 完全静态作成
+- 完全静态做成
 
 ## 开发
 
